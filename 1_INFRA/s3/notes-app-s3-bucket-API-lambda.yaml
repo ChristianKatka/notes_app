@@ -1,0 +1,39 @@
+
+Description: S3 Bucket for note app API python flask
+
+Resources:
+  NotesAppS3BucketAPILambda:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: notes-app-api-lambda
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls : true
+        BlockPublicPolicy : true
+        IgnorePublicAcls : true
+        RestrictPublicBuckets : true
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            MaxAge: "300"
+            AllowedMethods:
+              - GET
+              - HEAD
+              - POST
+              - PUT
+              - DELETE
+            AllowedOrigins:
+              - "*"
+      Tags:
+        - Key: name
+          Value: s3 bucket for notes-app API lambda
+
+
+Outputs:
+  NotesAppS3BucketAPILambdaDomainName:
+    Description: notes-app API lambda s3 Bucket Domain Name
+    Value: !GetAtt NotesAppS3BucketAPILambda.DomainName
+    Export:
+      Name: note-app-API-lambda-bucket-domain-name
+
