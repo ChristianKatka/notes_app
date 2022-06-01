@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.scss';
-import TailwindTestContainer from './TailwindTest/tailwind-test.container';
+import HomeContainer from './Home/home.container';
 
 function App() {
   return (
-    <TailwindTestContainer></TailwindTestContainer>
+    <>
+      <HomeContainer></HomeContainer>
+    </>
   );
 }
 
