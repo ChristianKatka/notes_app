@@ -1,7 +1,11 @@
-import './home.container.scss';
+import NoteCard from '../Notes/note-card/note-card.component';
 
 const HomeContainer = (props) => {
-  return <div>{props.children}</div>;
+  return (
+    <main className='mt-20'>
+      <NoteCard></NoteCard>
+    </main>
+  );
 };
 
 export default HomeContainer;

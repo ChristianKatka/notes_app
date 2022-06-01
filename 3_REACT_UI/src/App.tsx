@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.scss';
+import TailwindTestContainer from './TailwindTest/tailwind-test.container';
 
 function App() {
   return (
-    <div className="text-gray-200">
-      <span>js</span>
-    </div>
-
+    <TailwindTestContainer></TailwindTestContainer>
   );
 }
 

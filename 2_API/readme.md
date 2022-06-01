@@ -23,7 +23,7 @@ pip3 install boto3
 <!-- BUILD APP -->
 pip3 install zappa
 zappa init
-zappa deploy production
+zappa deploy dev
 
 python3 -m pip install python-dotenv
 
