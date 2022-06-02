@@ -12,8 +12,8 @@ const TopUserInfo = (props) => {
         <span className='ml-2 font-bold'>Christian Kätkä</span>
       </section>
       <section className='flex items-center'>
-        <BsSearch size='18'></BsSearch>
-        <BsThreeDots size='18' className='ml-6'></BsThreeDots>
+        <BsSearch size='18' className='cursor-pointer'></BsSearch>
+        <BsThreeDots size='18' className='ml-6 cursor-pointer'></BsThreeDots>
       </section>
     </div>
   );

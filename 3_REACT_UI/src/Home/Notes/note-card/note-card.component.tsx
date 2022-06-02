@@ -1,18 +1,18 @@
+import NoteListItem from './note-list-item.component.tsx/note-list-item.component';
 import NoteTag from './note-tag/note-tag.component';
 
-const NoteCard = (props) => {
+const NoteCard = ({ note }) => {
   return (
     <main className='rounded-md bg-gray-100 p-2'>
-      <h3 className='text-gray-400'>20 APR</h3>
-      <h3 className='font-bold'>Exploration ides</h3>
+      <h3 className='text-gray-600'>{note.date}</h3>
+      <h3 className='font-bold text-lg'>{note.heading}</h3>
       <div>
-        <NoteTag text={'Design'}></NoteTag>
+        <NoteTag tags={note.tags}></NoteTag>
       </div>
-      <p>Have to remember</p>
-      <ul>
-        <li>Coffee</li>
-        <li>Tea</li>
-        <li>Milk</li>
+      <ul className='list-disc ml-5'>
+        {note.listItems.map((listItem: string) => (
+          <NoteListItem listItem={listItem} key={listItem}></NoteListItem>
+        ))}
       </ul>
     </main>
   );
