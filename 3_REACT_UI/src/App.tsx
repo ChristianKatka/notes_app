@@ -5,8 +5,8 @@ import TailwindTestContainer from './TailwindTest/tailwind-test.container';
 function App() {
   return (
     <>
-      <HomeContainer></HomeContainer>
-      {/* <TailwindTestContainer></TailwindTestContainer> */}
+      {/* <HomeContainer></HomeContainer> */}
+      <TailwindTestContainer></TailwindTestContainer>
     </>
   );
 }
