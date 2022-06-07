@@ -1,3 +1,7 @@
+# Hei
+Katso mielummin uusin ja edistyksekkäin äppini jonka olen rakentanut [github clap app](https://github.com/ChristianKatka/clap-app-public)
+
+
 ## Notes app landing
 Tässä näkyy UI joka tehty tailwind + flexbox + react icons yhdistelmällä
 
