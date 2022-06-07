@@ -1,5 +1,5 @@
 const NoteListItem = ({ listItem }) => {
-  return <li className='text-gray-600'>{listItem}</li>;
+  return <li>{listItem}</li>;
 };
 
 export default NoteListItem;

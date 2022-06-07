@@ -1,5 +1,6 @@
 import Masonry from 'react-masonry-css';
 import { Note } from '../models/note.model';
+import AddNewNote from '../Shared/add-new-note/add-new-note.component';
 import { Divider } from '../Shared/divider/notes-app-wrapper.component';
 import NotesAppWrapper from '../Shared/notes-app-wrapper/notes-app-wrapper.component';
 import NoteCard from './Notes/note-card/note-card.component';
@@ -58,6 +59,43 @@ const HomeContainer = (props) => {
         { checked: true, text: 'Laundry' },
       ],
     },
+    {
+      id: '91u208uw998sa89yn',
+      date: '18 APR',
+      heading: 'Grocery List',
+      tags: ['Shopping', 'List'],
+      listItems: [
+        'Cereal',
+        'Shampoo',
+        'Toothpaste',
+        'Apple',
+        'Cup of noodles...',
+      ],
+      text: '',
+      checkBoxItems: [],
+    },
+    {
+      id: '9u01ujöjsöpaojkpdoija',
+      date: '20 APR',
+      heading: 'Exploration Ideas',
+      tags: ['Design', 'Productivity', '+1'],
+      listItems: [
+        'Ticket App',
+        'Travel Website',
+        'Digital Marketing Website...',
+      ],
+      text: '',
+      checkBoxItems: [],
+    },
+    {
+      id: 'u289y7dhs877hiahj',
+      date: '19 APR',
+      heading: 'Database Systems Week 4',
+      tags: ['Collage', 'Lecture', '+3'],
+      listItems: [],
+      text: 'obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these...',
+      checkBoxItems: [],
+    },
   ];
   const breakPoints = {
     default: 4,
@@ -67,7 +105,7 @@ const HomeContainer = (props) => {
   };
 
   return (
-    <main className='mt-6'>
+    <main className='mt-6 mb-24'>
       <NotesAppWrapper>
         <TopUserInfo></TopUserInfo>
         <Divider></Divider>
@@ -82,6 +120,8 @@ const HomeContainer = (props) => {
           ))}
         </Masonry>
       </NotesAppWrapper>
+
+      <AddNewNote></AddNewNote>
     </main>
   );
 };
