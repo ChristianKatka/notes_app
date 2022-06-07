@@ -1,3 +1,4 @@
+import Masonry from 'react-masonry-css';
 import { Note } from '../models/note.model';
 import { Divider } from '../Shared/divider/notes-app-wrapper.component';
 import NotesAppWrapper from '../Shared/notes-app-wrapper/notes-app-wrapper.component';
@@ -58,17 +59,28 @@ const HomeContainer = (props) => {
       ],
     },
   ];
+  const breakPoints = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
 
   return (
     <main className='mt-6'>
       <NotesAppWrapper>
         <TopUserInfo></TopUserInfo>
         <Divider></Divider>
-        <section className='flex flex-wrap gap-3'>
+
+        <Masonry
+          breakpointCols={breakPoints}
+          className='flex'
+          columnClassName='my-masonry-grid_column'
+        >
           {notes.map((note) => (
             <NoteCard note={note} key={note.id}></NoteCard>
           ))}
-        </section>
+        </Masonry>
       </NotesAppWrapper>
     </main>
   );

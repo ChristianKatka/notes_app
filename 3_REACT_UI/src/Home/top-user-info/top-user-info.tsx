@@ -1,6 +1,6 @@
 import { BsSearch, BsThreeDots } from 'react-icons/bs';
 
-const TopUserInfo = (props) => {
+const TopUserInfo = () => {
   return (
     <div className='flex justify-between'>
       <section className='flex items-center'>

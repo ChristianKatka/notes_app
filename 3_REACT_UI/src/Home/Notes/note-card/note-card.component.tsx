@@ -3,7 +3,7 @@ import NoteTag from './note-tag/note-tag.component';
 
 const NoteCard = ({ note }) => {
   return (
-    <main className='rounded-md bg-gray-100 p-2'>
+    <main className='rounded-md bg-gray-100 p-2 w-52 my-4'>
       <h3 className='text-gray-600'>{note.date}</h3>
       <h3 className='font-bold text-lg'>{note.heading}</h3>
       <div>
@@ -14,6 +14,7 @@ const NoteCard = ({ note }) => {
           <NoteListItem listItem={listItem} key={listItem}></NoteListItem>
         ))}
       </ul>
+      <p>{note.text}</p>
     </main>
   );
 };
