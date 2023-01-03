@@ -2,8 +2,8 @@
 set -e 
 
 REGION="eu-west-1"
-TEMPLATE_FILE="./s3/notes-app-s3-bucket-API-lambda.yaml"
-STACK_NAME="notes-app-s3-bucket-API-lambda"
+TEMPLATE_FILE="./dynamodb/notes-app-dynamodb-notes-table.yaml"
+STACK_NAME="notes-app-dynamodb-notes-table"
 
 aws cloudformation deploy \
   --stack-name "$STACK_NAME"  \

@@ -1,0 +1,36 @@
+
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DynamoDB table for notes-app notes
+
+Resources:
+  NotesAppNotesTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: 'id'
+          AttributeType: 'S'
+      KeySchema:
+        - AttributeName: 'id'
+          KeyType: 'HASH'
+      BillingMode: PAY_PER_REQUEST
+      TableName: 'notes-app-notes'
+      StreamSpecification:
+        StreamViewType: 'NEW_AND_OLD_IMAGES'
+      Tags:
+        - Key: Name
+          Value: 'notes-app-notes-table'
+
+Outputs:
+  NotesAppNotesTableArn:
+    Description: notes app notes table ARN
+    Value: !GetAtt NotesAppNotesTable.Arn
+    Export:
+      Name: notes-app-notes-table-arn
+
+  NotesAppNotesTableStreamArn:
+    Description: notes app notes table stream ARN
+    Value: !GetAtt NotesAppNotesTable.StreamArn
+    Export:
+      Name: notes-app-notes-table-stream-arn
+

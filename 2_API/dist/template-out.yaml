@@ -1,0 +1,80 @@
+Transform: AWS::Serverless-2016-10-31
+Description: API powered by API Gateway and Lambda using Koa
+Resources:
+  ApiGatewayHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Auth: null
+      CorsConfiguration:
+        AllowOrigins:
+        - '*'
+        AllowHeaders:
+        - '*'
+        AllowMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        MaxAge: 60
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 50
+        ThrottlingRateLimit: 50
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+          Action: sts:AssumeRole
+      Path: /
+      Policies:
+      - PolicyName: root
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource: arn:aws:logs:*:*:*
+  AllowLambdaDynamoDB:
+    Type: AWS::IAM::Policy
+    DependsOn:
+    - LambdaExecutionRole
+    Properties:
+      PolicyName: AllowLambdaDynamoDB
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - dynamodb:*
+          Resource:
+          - '*'
+      Roles:
+      - Ref: LambdaExecutionRole
+  API:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://notes-app-api-lambda-bucket/100eb0ebc79f2d499fbb6329531e6ac4
+      Handler: index.handler
+      MemorySize: 2048
+      Role:
+        Fn::GetAtt:
+        - LambdaExecutionRole
+        - Arn
+      Runtime: nodejs14.x
+      Timeout: 30
+      Events:
+        ApiEvent:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: ApiGatewayHttpApi
+            Path: $default
+            PayloadFormatVersion: '1.0'
+            Method: ANY

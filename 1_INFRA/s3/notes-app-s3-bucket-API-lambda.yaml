@@ -1,12 +1,12 @@
 
-Description: S3 Bucket for note app API python flask
+Description: S3 Bucket for notes app API koa lambda
 
 Resources:
   NotesAppS3BucketAPILambda:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: Private
-      BucketName: notes-app-api-lambda
+      BucketName: notes-app-api-lambda-bucket
       PublicAccessBlockConfiguration:
         BlockPublicAcls : true
         BlockPublicPolicy : true
@@ -27,13 +27,4 @@ Resources:
               - "*"
       Tags:
         - Key: name
-          Value: s3 bucket for notes-app API lambda
-
-
-Outputs:
-  NotesAppS3BucketAPILambdaDomainName:
-    Description: notes-app API lambda s3 Bucket Domain Name
-    Value: !GetAtt NotesAppS3BucketAPILambda.DomainName
-    Export:
-      Name: note-app-API-lambda-bucket-domain-name
-
+          Value: s3 bucket for notes app API lambda
