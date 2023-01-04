@@ -15,22 +15,27 @@ const MainNotesViewContainer = () => {
   return (
     <>
       {isLoading && (
-        <main className="center">
+        <section className="center">
           <CircularProgress />
-        </main>
+        </section>
       )}
-      <Masonry
-        breakpointCols={masonryBreakPoints}
-        className="flex"
-        columnClassName="my-masonry-grid_column"
-      >
-        {notes.map((note) => (
-          <NoteCard note={note} key={note.id}></NoteCard>
-        ))}
-      </Masonry>
-      <AddNewNoteButton
-        openCreateNewNotePage={() => navigate(`/create-note`)}
-      ></AddNewNoteButton>
+
+      {!isLoading && (
+        <section>
+          <Masonry
+            breakpointCols={masonryBreakPoints}
+            className="flex"
+            columnClassName="my-masonry-grid_column"
+          >
+            {notes.map((note) => (
+              <NoteCard note={note} key={note.id}></NoteCard>
+            ))}
+          </Masonry>
+          <AddNewNoteButton
+            openCreateNewNotePage={() => navigate(`/create-note`)}
+          ></AddNewNoteButton>
+        </section>
+      )}
     </>
   );
 };
