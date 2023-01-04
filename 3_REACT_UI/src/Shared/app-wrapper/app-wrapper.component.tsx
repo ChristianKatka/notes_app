@@ -1,5 +1,5 @@
 const AppWrapper = (props) => {
-  // chilidren on sama ku ng-content
+  // chilidren same as ng-content
   return (
     <main className='flex items-center justify-center'>
       <section className='w-[95%]'>{props.children}</section>

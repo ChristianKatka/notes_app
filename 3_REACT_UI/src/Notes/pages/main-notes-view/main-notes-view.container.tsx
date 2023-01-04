@@ -1,15 +1,15 @@
 import Masonry from "react-masonry-css";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../store";
 import AddNewNoteButton from "../../components/add-new-note-button/add-new-note-button.component";
 import { masonryBreakPoints } from "../../constants";
-import { Note } from "../../models/note.model";
-// import getNotes from "../../services/notes.service";
 import NoteCard from "./note-card/note-card.component";
 
 const MainNotesViewContainer = () => {
-  // const notes: Note[] = getNotes();
-
   const navigate = useNavigate();
+
+  const notes = useAppSelector((state) => state.notesFeature.notes);
+
   return (
     <>
       <Masonry
@@ -17,9 +17,9 @@ const MainNotesViewContainer = () => {
         className="flex"
         columnClassName="my-masonry-grid_column"
       >
-        {/* {notes.map((note) => (
+        {notes.map((note) => (
           <NoteCard note={note} key={note.id}></NoteCard>
-        ))} */}
+        ))}
       </Masonry>
       <AddNewNoteButton
         openCreateNewNotePage={() => navigate(`/create-note`)}
