@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { TextField, CircularProgress} from "@material-ui/core";
 import { useState } from "react";
 
 const CreateNote = ({ onSubmitNewNote }) => {

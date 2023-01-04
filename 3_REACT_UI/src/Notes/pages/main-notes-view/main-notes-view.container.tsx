@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import Masonry from "react-masonry-css";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../store";
@@ -9,10 +10,15 @@ const MainNotesViewContainer = () => {
   const navigate = useNavigate();
 
   const notes = useAppSelector((state) => state.notesFeature.notes);
+  const isLoading = useAppSelector((state) => state.notesFeature.loading);
 
   return (
     <>
-      <Masonry
+      <main>
+        <CircularProgress />
+      </main>
+
+      {/* <Masonry
         breakpointCols={masonryBreakPoints}
         className="flex"
         columnClassName="my-masonry-grid_column"
@@ -23,7 +29,7 @@ const MainNotesViewContainer = () => {
       </Masonry>
       <AddNewNoteButton
         openCreateNewNotePage={() => navigate(`/create-note`)}
-      ></AddNewNoteButton>
+      ></AddNewNoteButton> */}
     </>
   );
 };

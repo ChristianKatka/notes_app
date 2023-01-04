@@ -24,17 +24,12 @@ export const noteSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getNotesThunk.pending, (state) => {
-        console.log("pending");
-
         return {
           ...state,
           loading: true,
         };
       })
       .addCase(getNotesThunk.fulfilled, (state, { payload }) => {
-        console.log("fulfilled");
-        console.log(payload);
-
         return {
           ...state,
           loading: false,
@@ -42,8 +37,6 @@ export const noteSlice = createSlice({
         };
       })
       .addCase(getNotesThunk.rejected, (state) => {
-        console.log("rejected");
-
         return {
           ...state,
           loading: false,
