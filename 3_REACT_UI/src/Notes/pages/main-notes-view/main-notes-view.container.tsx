@@ -14,11 +14,12 @@ const MainNotesViewContainer = () => {
 
   return (
     <>
-      <main>
-        <CircularProgress />
-      </main>
-
-      {/* <Masonry
+      {isLoading && (
+        <main className="center">
+          <CircularProgress />
+        </main>
+      )}
+      <Masonry
         breakpointCols={masonryBreakPoints}
         className="flex"
         columnClassName="my-masonry-grid_column"
@@ -29,7 +30,7 @@ const MainNotesViewContainer = () => {
       </Masonry>
       <AddNewNoteButton
         openCreateNewNotePage={() => navigate(`/create-note`)}
-      ></AddNewNoteButton> */}
+      ></AddNewNoteButton>
     </>
   );
 };

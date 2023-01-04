@@ -9,7 +9,7 @@ const TopUserInfoBar = ({userName}) => {
           alt='profile'
           className='object-cover rounded-full h-10 w-10'
         />
-        <span className='ml-2 font-bold'>{userName}</span>
+        <span className='ml-2 font-bold ssss'>{userName}</span>
       </section>
       <section className='flex items-center'>
         <BsSearch size='18' className='cursor-pointer'></BsSearch>

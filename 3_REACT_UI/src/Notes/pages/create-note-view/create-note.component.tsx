@@ -1,5 +1,8 @@
-import { TextField, CircularProgress} from "@material-ui/core";
+import { TextField, CircularProgress } from "@material-ui/core";
 import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import "./create-note.component.css";
+import TagComponent from "./tag/tag.component";
 
 const CreateNote = ({ onSubmitNewNote }) => {
   const [input, setInput] = useState({});
@@ -8,20 +11,30 @@ const CreateNote = ({ onSubmitNewNote }) => {
     onSubmitNewNote(input);
   };
 
+  let tags = ["React", "Tea", "Tortilla"];
+
+  const deleteTag = (tag: string) => {
+    console.log("deletet ag");
+    // tags.splice(tag, 1);
+  };
+
   return (
     <>
-      <TextField
-        label="Otsikko"
-        variant="outlined"
-        onChange={(e) => setInput({ ...input, heading: e.target.value })}
-      ></TextField>
+      <main className="flex-row align-center-center bg-gray h-14 rounded">
 
-      <TextField
-        label="Muistiinpano"
-        variant="outlined"
-        onChange={(e) => setInput({ ...input, text: e.target.value })}
-      ></TextField>
-      <button onClick={submit}>Submit</button>
+        {tags.map((tag, i) => (
+          <TagComponent key={i} tag={tag} deleteTag={(tag) => deleteTag(tag)}/>
+        ))}
+
+        <form className="rounded-md ">
+          <input
+            className="ml-2"
+            type="text"
+            placeholder="Add tag"
+          />
+        </form>
+      </main>
+
     </>
   );
 };

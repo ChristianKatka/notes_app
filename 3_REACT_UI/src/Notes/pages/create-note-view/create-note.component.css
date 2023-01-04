@@ -1,0 +1,25 @@
+form {
+  /* margin: 50px; */
+  padding: 5px;
+  /* background: rgb(161, 196, 161); */
+  display: inline-block;
+  width: 100%;
+}
+
+form input {
+  border: none;
+  background: transparent;
+  /* border-bottom: 1px solid #fff; */
+  outline: none;
+  width: 100%;
+}
+
+form button {
+  background: transparent;
+  border: 0;
+  color: #fff;
+}
+
+.scale-down {
+  transform: scale(0.7);
+}
