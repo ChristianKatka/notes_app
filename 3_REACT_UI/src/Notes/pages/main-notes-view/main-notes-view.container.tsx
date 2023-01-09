@@ -10,6 +10,7 @@ const MainNotesViewContainer = () => {
   const navigate = useNavigate();
 
   const notes = useAppSelector((state) => state.notesFeature.notes);
+
   const isLoading = useAppSelector((state) => state.notesFeature.loading);
 
   return (

@@ -5,8 +5,17 @@ import TagComponent from "./add-tags/tag/tag.component";
 import AddTagsComponent from "./add-tags/add-tags.component";
 
 const CreateNote = ({ onSubmitNewNote }) => {
-  const headingText = (e) => {};
+  let note = {};
+  const headingText = (event) => {
+    note = { ...note, heading: event.target.value };
+  };
+  const noteText = (event) => {
+    note = { ...note, text: event.target.value, tags: ["React", "Angular"] };
+  };
 
+  const createNote = () => {
+    onSubmitNewNote(note);
+  };
   return (
     <>
       <section className="my-10">
@@ -21,7 +30,18 @@ const CreateNote = ({ onSubmitNewNote }) => {
       </section>
 
       <AddTagsComponent />
-      <p>tekstit</p>
+      <section className="my-10">
+        <TextField
+          className="w-full"
+          size="small"
+          type="text"
+          onChange={(e) => noteText(e)}
+          label="The note"
+          variant="outlined"
+        />
+      </section>
+
+      <button onClick={createNote}>Create note</button>
     </>
   );
 };
