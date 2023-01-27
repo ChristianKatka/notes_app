@@ -1,17 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { listenerMiddleware } from "./Notes/store/efects/note.efects";
-import { noteSlice } from "./Notes/store/slices/note.slice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import effects from "./Notes/store/effects";
+import { notesSlice } from "./Notes/store/reducers/notes.reducer";
 
-export const store = configureStore({
-  reducer: { notesFeature: noteSlice.reducer },
-
-
-
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([listenerMiddleware.middleware]),
+const rootReducer = combineReducers({
+  notes: notesSlice.reducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export const useAppDispatch: () => typeof store.dispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([sagaMiddleware]),
+});
+
+sagaMiddleware.run(effects);
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;

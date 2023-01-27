@@ -1,18 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppWrapper from "../Shared/app-wrapper/app-wrapper.component";
 import { Divider } from "../Shared/divider/divider.component";
-import { useAppDispatch } from "../store";
-import TopUserInfoBarContainer from "./components/top-user-info-bar/top-user-info-bar.container";
+import TopUserInfoBarContainer from "./pages/components/top-user-info-bar/top-user-info-bar.container";
 import CreateNoteContainer from "./pages/create-note-view/create-note.container";
 import MainNotesViewContainer from "./pages/main-notes-view/main-notes-view.container";
-import { getNotesThunk } from "./store/thunks/note.thunk";
+import { notesGet } from "./store/reducers/notes.reducer";
 
 const NotesFeatureContainer = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
+  const effectCalled = useRef(true);
   useEffect(() => {
-    dispatch(getNotesThunk());
+    if (effectCalled.current) {
+      effectCalled.current = false;
+      dispatch(notesGet());
+    }
   }, []);
 
   return (
